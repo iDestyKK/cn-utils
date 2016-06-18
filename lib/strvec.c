@@ -7,7 +7,7 @@
  *     Might merge this with HandyC later.
  *
  * Author:
- *     Clara Taylor
+ *     Clara Van Nguyen
  */
 
 #include <stdlib.h>

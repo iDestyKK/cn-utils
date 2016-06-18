@@ -14,7 +14,7 @@
  *     Changelog of library is located at the bottom of this file.
  *
  * Author:
- *     Clara Taylor
+ *     Clara Van Nguyen
  */
 
 #ifndef __CTAY_HANDYC__
