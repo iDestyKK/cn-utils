@@ -19,7 +19,7 @@ typedef struct directory {
     char*  path;
     char*  fname;
     CN_VEC file; //cn_vec of files
-    CN_VEC dir;  //cn_vec of directories
+    CN_VEC dir;  //cn_ec of directories
 	struct stat s_stat;
 } DIRECTORY;
 
@@ -62,7 +62,7 @@ void parse_command(char* str, INFO* DATA) {
                 printf("  -h\tShows this help prompt (And terminates the program)\n");
                 printf("  -r\tEnable Recursion\n");
 				printf("  -p\tShows file permissions\n");
-                printf("  -s\tShows file sizes\n");
+               	printf("  -s\tShows file sizes\n");
 				printf("  -a\tShows all information about a file (Includes -p and -s)\n");
 
 				exit(0);
@@ -165,10 +165,10 @@ void traverse_directory(CN_VEC vec, char* current_directory, INFO* DATA) {
 	qsort(cn_vec_data(dir.file), cn_vec_size(dir.file), sizeof(DIR_FILE ), cmpfile);
 
 	//Get the longest filesize (If we have to show the filesize).
-	unsigned long long sllen = 0,
+	unsigned long long sslen = 0,
+	                   sllen = 0,
+		               lslen = 0,
 	                   lllen = 0;
-	int sslen = 0,
-	    lslen = 0;
 	if (DATA->fsize) {
 		DIRECTORY* dd;
 		DIR_FILE * fd;
@@ -220,10 +220,10 @@ void traverse_directory(CN_VEC vec, char* current_directory, INFO* DATA) {
 		}
 
 		if (DATA->nlink)
-			printf("%*d ", lslen, fd->s_stat.st_nlink);
+			printf("%*d ", (int)lslen, fd->s_stat.st_nlink);
 
 		if (DATA->fsize)
-			printf("%*llu ", sslen, (unsigned long long) fd->s_stat.st_size);
+			printf("%*llu ", (int)sslen, (unsigned long long)fd->s_stat.st_size);
 
         printf("%s\n", fd->fname);
 	}
@@ -247,10 +247,10 @@ void traverse_directory(CN_VEC vec, char* current_directory, INFO* DATA) {
 		}
 		
 		if (DATA->nlink)
-			printf("%*u ", lslen, fd->s_stat.st_nlink);
+			printf("%*d ", (int)lslen, fd->s_stat.st_nlink);
 
 		if (DATA->fsize)
-			printf("%*llu ", sslen, (unsigned long long) fd->s_stat.st_size);
+			printf("%*llu ", (int)sslen, (unsigned long long)fd->s_stat.st_size);
 
         printf("%s\n", fd->fname);
 	}

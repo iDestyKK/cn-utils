@@ -14,7 +14,7 @@
  *     Changelog of library is located at the bottom of "handyc.h"
  *
  * Author:
- *     Clara Van Nguyen
+ *     Clara Taylor
  */
 
 #include "handyc.h"

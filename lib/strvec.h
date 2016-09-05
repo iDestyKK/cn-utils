@@ -7,7 +7,7 @@
  *     Might merge this with HandyC later.
  *
  * Author:
- *     Clara Van Nguyen
+ *     Clara Taylor
  */
 
 #ifndef __CT_STRVEC__

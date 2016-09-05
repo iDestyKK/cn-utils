@@ -11,7 +11,7 @@
  *     Changelog of library is located at the bottom of "cn_vec.h"
  *
  * Author:
- *     Clara Van Nguyen
+ *     Clara Ann Nguyen
  *
  * For documentation and details on every function in this library, visit the following URL:
  * http://web.eecs.utk.edu/~ssmit285/lib/cn_vec/index.html
