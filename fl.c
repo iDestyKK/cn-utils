@@ -220,10 +220,10 @@ void traverse_directory(CN_VEC vec, char* current_directory, INFO* DATA) {
 		}
 
 		if (DATA->nlink)
-			printf("%*d ", lslen, fd->s_stat.st_nlink);
+			printf("%*d ", (int)lslen, fd->s_stat.st_nlink);
 
 		if (DATA->fsize)
-			printf("%*llu ", sslen, fd->s_stat.st_size);
+			printf("%*llu ", (int)sslen, (unsigned long long)fd->s_stat.st_size);
 
         printf("\x1B[1;34m%s\x1B[0m\n", fd->fname);
 	}
@@ -247,10 +247,10 @@ void traverse_directory(CN_VEC vec, char* current_directory, INFO* DATA) {
 		}
 		
 		if (DATA->nlink)
-			printf("%*u ", lslen, fd->s_stat.st_nlink);
+			printf("%*u ", (int)lslen, fd->s_stat.st_nlink);
 
 		if (DATA->fsize)
-			printf("%*llu ", sslen, fd->s_stat.st_size);
+			printf("%*llu ", (int)sslen, (unsigned long long)fd->s_stat.st_size);
 
 		printf("%s%s\x1B[0m\n",
 				(fd->s_stat.st_mode & S_IXOTH) ? "\x1B[1;32m" : "",
