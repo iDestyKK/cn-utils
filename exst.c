@@ -18,18 +18,17 @@
 #include "lib/cn_comp.h"
 #include "lib/cn_map.h"
 
-typedef unsigned int       e_uint;
-typedef unsigned long long e_ull;
+typedef unsigned int e_uint;
 const char* NA = "[n/a]";
 
 typedef struct total_info {
-	e_ull  total_size;
-	e_uint name_size,
+	e_uint total_size,
+	       name_size,
 	       size_size;
 } TOTAL_INFO;
 
 typedef struct ext_info {
-	e_ull  total_size;
+	e_uint total_size;
 } EXT_INFO;
 
 //Get file extension
@@ -51,10 +50,10 @@ const char* get_extension(const char* fname) {
 }
 
 void print_extension_details(CN_MAP emap, TOTAL_INFO* data) {
-	printf("Analysed %llu bytes\n\nEXTENSION DATA\n", data->total_size);
+	printf("Analysed %d bytes\n\nEXTENSION DATA\n", data->total_size);
 	CNM_ITERATOR* iterator = cn_map_begin(emap);
 	while (iterator->node != NULL) {
-		printf("  %*s - %*llu bytes (%*.2f\%%)\n", data->name_size, *(char**)iterator->node->key,
+		printf("  %*s - %*d bytes (%*.2f\%%)\n", data->name_size, *(char**)iterator->node->key,
 		    data->size_size, cn_map_deref(iterator->node->data, EXT_INFO).total_size,
 		    6, 100. * ((double)cn_map_deref(iterator->node->data, EXT_INFO).total_size / data->total_size));
 		iterator = cn_map_next(emap, iterator);

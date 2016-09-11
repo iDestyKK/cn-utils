@@ -8,10 +8,10 @@
 
 # Specify Parameters
 CC = gcc
-CFLAGS = --std=gnu89
+CFLAGS = --std=gnu89 -g
 EPATH = ./../bin
 
-all: $(EPATH)/create $(EPATH)/hex $(EPATH)/lower $(EPATH)/upper $(EPATH)/cn_render $(EPATH)/fl $(EPATH)/randstr $(EPATH)/this $(EPATH)/exst
+all: $(EPATH)/create $(EPATH)/hex $(EPATH)/lower $(EPATH)/upper $(EPATH)/cn_render $(EPATH)/fl $(EPATH)/randstr $(EPATH)/exst $(EPATH)/this
 
 # Perform Awesomeness...
 $(EPATH)/create:
@@ -35,12 +35,8 @@ $(EPATH)/fl:
 $(EPATH)/randstr:
 	$(CC) $(CFLAGS) -o $(EPATH)/randstr randstr.c
 
-$(EPATH)/this:
-	$(CC) $(CFLAGS) -o $(EPATH)/this this.c
-
 $(EPATH)/exst:
 	$(CC) $(CFLAGS) -o $(EPATH)/exst exst.c lib/cn_comp.c lib/cn_map.c
 
-# Because I am sick of typing this command over and over again...
-clean:
-	rm $(EPATH)/*
+$(EPATH)/this:
+	$(CC) $(CFLAGS) -o $(EPATH)/this this.c
